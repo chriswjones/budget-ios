@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
 @property (nonatomic, weak) IBOutlet UITextField *textField;
+@property (nonatomic, weak) IBOutlet UIButton *goBtn;
 @property (nonatomic, weak) IBOutlet UILabel *valueLbl;
 @property (nonatomic, weak) IBOutlet UIButton *resetBtn;
 

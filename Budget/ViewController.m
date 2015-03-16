@@ -33,30 +33,13 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSInteger curBalance = [textField.text integerValue];
-    
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDate *now = [NSDate date];
-    
-    NSInteger day = [[[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:now] day];
-    NSInteger daysInMonth = [cal rangeOfUnit:NSCalendarUnitDay
-                           inUnit:NSCalendarUnitMonth
-                          forDate:now].length;
-
-    NSInteger spendPerDay = 100;
-    NSInteger floor = 2000;
-    
-    NSInteger monthStart = floor + (daysInMonth * spendPerDay);
-    NSInteger spent = (day - 1) * spendPerDay;
-    NSInteger targetValue = monthStart - spent;
-    
-    NSInteger diff = curBalance - targetValue;
-    [self showCalc:diff];
-    return YES;
+    [self submit:nil];
+        return YES;
 }
 
 - (void)showTextInput {
     _textField.hidden = FALSE;
+    _goBtn.hidden = FALSE;
     _valueLbl.hidden = TRUE;
         _resetBtn.hidden = TRUE;
     _textField.text = @"";
@@ -64,6 +47,7 @@
 
 - (void)showCalc:(NSInteger)diff {
     _textField.hidden = TRUE;
+        _goBtn.hidden = TRUE;
     _valueLbl.hidden = FALSE;
             _resetBtn.hidden = FALSE;
     _valueLbl.text = [NSString stringWithFormat:@"%ld", (long)diff];
@@ -78,6 +62,28 @@
 
 - (IBAction)touchUpInside:(id)sender {
     [self showTextInput];
+}
+
+- (IBAction)submit:(id)sender {
+    NSInteger curBalance = [_textField.text integerValue];
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDate *now = [NSDate date];
+    
+    NSInteger day = [[[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:now] day];
+    NSInteger daysInMonth = [cal rangeOfUnit:NSCalendarUnitDay
+                                      inUnit:NSCalendarUnitMonth
+                                     forDate:now].length;
+    
+    NSInteger spendPerDay = 100;
+    NSInteger floor = 2000;
+    
+    NSInteger monthStart = floor + (daysInMonth * spendPerDay);
+    NSInteger spent = (day - 1) * spendPerDay;
+    NSInteger targetValue = monthStart - spent;
+    
+    NSInteger diff = curBalance - targetValue;
+    [self showCalc:diff];
 }
 
 @end

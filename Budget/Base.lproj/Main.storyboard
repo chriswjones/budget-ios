@@ -44,10 +44,21 @@
                                     <action selector="touchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hBT-eJ-4sq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UJg-PX-ngs">
+                                <rect key="frame" x="251" y="30" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submit:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BaH-Zr-YEV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="goBtn" destination="UJg-PX-ngs" id="IWg-3s-hnt"/>
                         <outlet property="resetBtn" destination="CXA-be-r2z" id="ml2-Hu-xZd"/>
                         <outlet property="textField" destination="O8f-J7-7K7" id="HIH-Bn-TJO"/>
                         <outlet property="valueLbl" destination="eAy-nN-Ks5" id="nmu-Hz-fZB"/>
